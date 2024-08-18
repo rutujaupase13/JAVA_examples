@@ -1,0 +1,12 @@
+import java.util.Scanner;
+class Tester {
+	public static void main(String[] args) {
+	    Scanner num = new Scanner(System.in);
+	    System.out.println("Enter Radius : ");
+		int radius = num.nextInt;
+		double pi = 3.14;
+		double Area = pi * radius * radius;
+		System.out.println("Area is "+Area);
+	}
+}
+
