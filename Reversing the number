@@ -1,0 +1,2399 @@
+import java.util.Scanner;
+public class reverse_of_number
+{
+  public static void main(String[] args)
+  {
+    //scanner class declaration
+    Scanner sc = new Scanner(System.in);
+
+    //input from user
+    System.out.print("Enter a number : ");
+    int number = sc.nextInt();
+    System.out.print("Reverse of " + number + " is ");
+int reverse = 0;
+    String s = "";
+    while (number != 0)
+    {
+     int pick_last = number % 10;
+
+      //use function to convert pick_last from integer to string
+      s = s + Integer.toString(pick_last);
+      number = number / 10;
+    }
+
+    //display the reversed number
+    System.out.print(s);
+
+    //closing scanner class(not compulsory, but good practice)
+
+    sc.close();
+  }
+
+}
+2. Write the code to find the Fibonacci series upto the nth term.
+This problem asks to generate the Fibonacci sequence up to the nth term. In this sequence, each number is the sum of the two preceding ones, starting from 0 and 1.
+
+The goal is to calculate and display all Fibonacci numbers from the 0th to the nth term.
+Example for n = 10:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34   
+(Writing: Start with 0 and 1 → 0+1=1 → 1+1=2 → 1+2=3 → 2+3=5 → and so on.)
+
+C	C++	Java	Python
+Run
+#include<stdio.h>
+
+int main() {
+  int n = 10;
+  int a = 0, b = 1;
+
+  // printing the 0th and 1st term
+  printf("%d, %d", a, b);
+
+  int nextTerm;
+
+  // printing the rest of the terms here
+  for (int i = 2; i < n; i++) {
+    nextTerm = a + b;
+    a = b;
+    b = nextTerm;
+
+    printf("%d, ", nextTerm);
+  }
+
+  return 0;
+}
+3. Write code of Greatest Common Divisor 
+This problem asks to find the Greatest Common Divisor (GCD) of two given numbers. The GCD of two numbers is the largest positive integer that divides both numbers without leaving a remainder.
+
+The Euclidean algorithm is a popular method for efficiently computing the GCD.
+Example: Find GCD of 36 and 60:
+The common divisors of 36 and 60 are 1, 2, 3, 4, 6, 9, 12, 18, 36 and 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60.
+The largest common divisor is 12.
+C	C++	JAVA	Python
+Run
+// The code used a recursive function to return gcd of p and q 
+ int gcd(int p, int q) 
+ { 
+
+   // checking divisibility by 0 
+    if (p == 0) 
+       return q; 
+  
+    if (q == 0) 
+       return p; 
+
+    // base case 
+    if (p == q) 
+      return p; 
+    
+   // p is greater  
+    if (p > q) 
+        return gcd(p-q, q);   
+
+    else
+        return gcd(p, q-p); 
+ } 
+
+// Driver program to test above function 
+int main() 
+{ 
+    int p = 98, q = 56; 
+    printf("GCD of %d and %d is %d ", p, q, gcd(p, q)); 
+    return 0; 
+}
+4. Write code of  Perfect number
+A perfect number is a positive integer that is equal to the sum of its proper divisors, excluding the number itself. 
+Example: Is 28 a perfect number?
+The divisors of 28 are 1, 2, 4, 7, 14.
+Sum of divisors: 1 + 2 + 4 + 7 + 14 = 28, so 28 is a perfect number.
+C	C++	JAVA	Python
+Run
+#include<stdio.h>
+
+int main() {
+  // Initialization of variables
+  int number, i = 1, total = 0;
+
+  // To take user input
+  printf("Enter a number: ");
+  scanf("%d", & number);
+
+  while (i < number) {
+    if (number % i == 0) {
+      total = total + i;
+      i++;
+    }
+  }
+  //to condition is true
+  if (total == number)
+    //display
+    printf("%d is a perfect number", number);
+  //to condition is false
+  else
+    //display
+    printf("%d is not a perfect number", number);
+
+  return 0;
+}
+5. Write code to Check if two strings are Anagram or not
+Two strings are called anagrams if they contain the same characters in the same frequencies, but possibly in different orders.
+
+This code checks whether two given strings are anagrams of each other.
+Example: Are “listen” and “silent” anagrams?
+Sort both:
+“listen” → “eilnst”
+
+“silent” → “eilnst”
+Both are the same, so “listen” and “silent” are anagrams.
+
+C	C++	JAVA	Python
+Run
+#include<stdio.h> 
+
+int main()
+{
+    //Initializing variables.
+    char str[100];
+    int i;
+    int freq[256] = {0};
+    
+    //Accepting inputs.
+    printf("Enter the string: ");
+    gets(str);
+    
+    //Calculating frequency of each character.
+    for(i = 0; str[i] != '\0'; i++)
+    {
+        freq[str[i]]++;
+    }
+    
+    
+    printf("The non repeating characters are: ");
+    for(i = 0; i < 256; i++)
+    {
+        if(freq[i] == 1)//Finding uniques charcters and printing them.
+        {
+            printf(" %c ", i);
+        }
+    }
+    return 0;
+}
+6. Write code Check if the given string is Palindrome or not
+A palindrome is a word, phrase, or sequence that reads the same backward as forward, ignoring spaces, punctuation, and capitalization.
+
+This code checks if a given string is a palindrome.
+Example for a palindrome:
+“madam” — reads the same backward as forward
+C	C++	JAVA	Python
+Run
+#include<stdio.h>
+#include <string.h>
+
+int main()
+{
+    //Initializing variable.
+    char str[100];  
+    int i,length=0,flag=0;
+
+    //Accepting input.
+    printf("Enter  the string : ");
+    gets(str);
+    length=strlen(str);
+
+    //Initializing for loop.
+    for(i=0;i<length/2;i++)  
+    {
+      //Checking if string is palindrome or not.
+      if(str[i]==str[length-i-1])
+      flag++;
+
+    }
+      //Printing result.
+      if(flag==i)
+ 	   printf("String entered is palindrome");
+      else
+           printf("String entered is not palindrome");
+
+      return 0;
+}
+7. Write code to Calculate frequency of characters in a string
+This problem asks to calculate the frequency of each character in a given string.
+
+The goal is to determine how many times each character appears in the string.
+Example for string “hello”:
+‘h’ appears 1 time
+‘e’ appears 1 time
+‘l’ appears 2 times
+‘o’ appears 1 time
+C	C++	JAVA	Python
+Run
+#include<stdio.h>
+
+int main() {
+  //Initializing variables.
+  char str[100];
+  int i;
+  int freq[256] = {
+    0
+  };
+
+  //Accepting inputs.
+  printf("Enter the string: ");
+  gets(str);
+
+  //Calculating frequency of each character.
+  for (i = 0; str[i] != '\0'; i++) {
+    freq[str[i]]++;
+  }
+
+  //Printing frequency of each character.
+  for (i = 0; i < 256; i++) {
+    if (freq[i] != 0) {
+      printf("The frequency of %c is %d\n", i, freq[i]);
+    }
+  }
+  return 0;
+}
+8. Write code to check if two strings match where one string contains wildcard characters
+This problem checks if two strings match where one string contains wildcard characters. The wildcards are:
+
+* for any sequence of characters (including an empty sequence).
+? for exactly one character.
+Example:
+“he?lo” matches “hello”, but not “healo”.
+“he*o” matches “hello”, “hero”, or “heyo”.
+C	C++	Python
+Run
+#include<stdio.h> 
+#include<string.h>
+bool check(char *str1, char * str2) ;// declaration of the check() function
+int main() 
+{ 
+    char str1[100],str2[100];
+    printf("Enter first string with wild characters : ");
+    gets(str1);
+    printf("Enter second string without wild characters : ");
+    gets(str2);
+    test(str1,str2);
+    return 0; 
+} 
+
+bool check(char *str1, char * str2) 
+{ 
+    // checking end of both the strings 
+    if (*str1 == '\0' && *str2 == '\0') 
+         return true; 
+  
+    // comparing the characters of both the strings and wild characters(*)
+    if (*str1 == '*' && *(str1+1) != '\0' && *str2 == '\0') 
+         return false; 
+  
+    // checking wild characters(?) 
+    if (*str1 == '?' || *str1 == *str2) 
+         return check(str1+1, str2+1); 
+  
+    
+    if (*str1 == '*') 
+         return check(str1+1, str2) || check(str1, str2+1); 
+     return false; 
+} 
+  
+// test() function for running test cases
+void test(char *str1, char *str2) 
+{ 
+    check(str1, str2)? puts(" Yes "): puts(" No "); 
+    
+}
+9. Write a code for bubble sort
+Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+
+The process continues until the list is sorted.
+Example for list [5, 3, 8, 4, 2]:
+After sorting, the list will be [2, 3, 4, 5, 8].
+C	C++
+Run
+#include<stdio.h>
+
+/* Function to print array */
+void display(int arr[], int size) {
+  int i;
+  for (i = 0; i < size; i++)
+    printf("%d ", arr[i]);
+  printf("\n");
+}
+
+// Main function to run the program
+int main() {
+  int array[] = {
+    5,
+    3,
+    1,
+    9,
+    8,
+    2,
+    4,
+    7
+  };
+  int size = sizeof(array) / sizeof(array[0]);
+
+  printf("Before bubble sort: \n");
+  display(array, size);
+
+  int i, j, temp;
+  for (i = 0; i < size - 1; i++) {
+
+    // Since, after each iteration righmost i elements are sorted 
+    for (j = 0; j < size - i - 1; j++) if (array[j] > array[j + 1]) {
+        temp = array[j]; // swap the element
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+  }
+  printf("After bubble sort: \n");
+  display(array, size);
+  return 0;
+}
+10. How is the merge sort algorithm implemented?
+Merge Sort is a divide-and-conquer algorithm that splits the list into smaller sublists, sorts each sublist, and then merges the sorted sublists.
+
+The process continues recursively until the entire list is sorted.
+Example for list [5, 3, 8, 4, 2]:
+After sorting, the list will be [2, 3, 4, 5, 8].
+C	C++	JAVA
+Run
+#include<stdio.h>
+
+void mergeSort(int[], int, int);
+void merge(int[], int, int, int);
+
+void display(int arr[], int size) {
+  int i;
+  for (i = 0; i < size; i++) {
+    printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+
+void main() {
+  int a[10] = {
+    11,
+    9,
+    6,
+    19,
+    33,
+    64,
+    15,
+    75,
+    67,
+    88
+  };
+  int i;
+
+  int size = sizeof(a) / sizeof(a[0]);
+  display(a, size);
+
+  mergeSort(a, 0, size - 1);
+  display(a, size);
+}
+
+void mergeSort(int a[], int left, int right) {
+  int mid;
+  if (left < right) {
+    // can also use mid = left + (right - left) / 2
+    // this can avoid data type overflow
+    mid = (left + right) / 2;
+
+    // recursive calls to sort first half and second half subarrays
+    mergeSort(a, left, mid);
+    mergeSort(a, mid + 1, right);
+    merge(a, left, mid, right);
+  }
+}
+
+void merge(int arr[], int left, int mid, int right) {
+  int i, j, k;
+  int n1 = mid - left + 1;
+  int n2 = right - mid;
+
+  // create temp arrays to store left and right subarrays
+  int L[n1], R[n2];
+
+  // Copying data to temp arrays L[] and R[]
+  for (i = 0; i < n1; i++)
+    L[i] = arr[left + i];
+  for (j = 0; j < n2; j++)
+    R[j] = arr[mid + 1 + j];
+
+  // here we merge the temp arrays back into arr[l..r]
+  i = 0; // Starting index of L[i]
+  j = 0; // Starting index of R[i]
+  k = left; // Starting index of merged subarray
+
+  while (i < n1 && j < n2) {
+    // place the smaller item at arr[k] pos
+    if (L[i] <= R[j]) {
+      arr[k] = L[i];
+      i++;
+    } else {
+      arr[k] = R[j];
+      j++;
+    }
+    k++;
+  }
+  // Copy the remaining elements of L[], if any 
+  while (i < n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+  // Copy the remaining elements of R[], if any 
+  while (j < n2) {
+    arr[k] = R[j];
+    j++;
+    k++;
+  }
+}
+11. Write to code to check whether a given year is leap year or not.
+A leap year is a year that is divisible by 4, but not divisible by 100, unless it is also divisible by 400.
+
+This code checks whether a given year is a leap year based on this rule.
+Example:
+2020 is a leap year (divisible by 4).
+1900 is not a leap year (divisible by 100 but not 400).
+2000 is a leap year (divisible by 400).
+C	C++
+Run
+#include <stdio.h>
+
+int main() {
+  int year;
+  scanf("%d", & year);
+
+  if (year % 400 == 0)
+    printf("%d is a Leap Year", year);
+
+  else if (year % 4 == 0 && year % 100 != 0)
+    printf("%d is a Leap Year", year);
+
+  else
+    printf("%d is not a Leap Year", year);
+
+  return 0;
+}
+12. Find non-repeating characters in a string
+This problem asks to find the characters in a string that appear only once, i.e., the non-repeating characters.
+
+These characters are unique and do not appear multiple times in the string.
+Example for string “swiss”:
+Non-repeating characters are ‘w’ and ‘i’, since ‘s’ repeats.
+C	C++	JAVA	Python
+Run
+#include<stdio.h> 
+int main()
+{
+//Initializing variables.
+char str[100]="prepinsta";
+int i;
+int freq[256] = {0};
+//Calculating frequency of each character.
+for(i = 0; str[i] != '\0'; i++)
+{
+freq[str[i]]++;
+}
+printf("The non repeating characters are: ");
+for(i = 0; i < 256; i++)
+{
+if(freq[i] == 1)//Finding uniques charcters and printing them.
+{
+printf(" %c ", i);
+}
+}
+return 0;
+}
+
+13. Write a code to replace a substring in a string.
+This problem asks to replace a substring within a string with another substring.
+
+The goal is to find all occurrences of the target substring and replace them with the desired one.
+Example for string “hello world”:
+Replacing “world” with “Python” results in “hello Python”.
+C	C++	JAVA	Python
+#include<stdio.h>  
+#include<string.h>  
+  int main() {
+        char str[256] = "prepinsta", substr[128] = "insta", replace[128] = "ster ", output[256];
+        int i = 0, j = 0, flag = 0, start = 0;
+        
+        str[strlen(str) - 1] = '\0';
+        substr[strlen(substr) - 1] = '\0';
+        replace[strlen(replace) - 1] =  '\0';
+
+        // check whether the substring to be replaced is present 
+        while (str[i] != '\0')
+        {
+                if (str[i] == substr[j]) 
+                {
+                        if (!flag)
+                                start = i;
+                        j++;
+                        if (substr[j] == '\0')
+                                break;
+                        flag = 1;
+                } 
+                else 
+                {
+                        flag = start = j = 0;
+                }
+                i++;
+        }
+        if (substr[j] == '\0' && flag)
+        {
+                for (i = 0; i < start; i++)
+                        output[i] = str[i];
+
+                // replace substring with another string 
+                for (j = 0; j < strlen(replace); j++) 
+                {
+                        output[i] = replace[j];
+                        i++;
+                }
+                // copy remaining portion of the input string "str" 
+                for (j = start + strlen(substr); j < strlen(str); j++)
+                {
+                        output[i] = str[j];
+                        i++;
+                }
+                // print the final string 
+                output[i] = '\0';
+                printf("Output: %s\n", output);
+        } else {
+                printf("%s is not a substring of %s\n", substr, str);
+        }
+        return 0;
+  }
+14. Write a code for Heap sort.
+Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. It works by building a max-heap (or min-heap) from the input data and then repeatedly extracting the maximum element from the heap and placing it at the end of the array.
+
+This process is done until the heap is empty.
+Example for list [5, 3, 8, 4, 2]:
+After sorting, the list will be [2, 3, 4, 5, 8].
+C	C++	JAVA
+#include<stdio.h> // including library files 
+int temp;
+
+void heapify(int arr[], int size, int i)//declaring functions 
+{ 
+int max = i; 
+int left = 2*i + 1; 
+int right = 2*i + 2;
+
+if (left < size && arr[left] >arr[max]) 
+max= left;
+
+if (right < size && arr[right] > arr[max]) 
+max= right;
+
+if (max!= i) 
+{ 
+// performing sorting logic by using temporary variable 
+temp = arr[i]; 
+arr[i]= arr[max]; 
+arr[max] = temp; 
+heapify(arr, size, max); 
+} 
+}
+
+void heapSort(int arr[], int size)// providing definition to heap sort
+{ 
+int i; 
+for (i = size / 2 - 1; i >= 0; i--) 
+heapify(arr, size, i); 
+for (i=size-1; i>=0; i--) 
+{ 
+// swaping logic
+temp = arr[0]; 
+arr[0]= arr[i]; 
+arr[i] = temp; 
+heapify(arr, i, 0); 
+} 
+}
+
+void main() // defining main() 
+{ 
+int arr[] = {58, 134, 3, 67, 32, 89, 15, 10,78, 9};
+// array initializing with their elements. 
+int i; 
+int size = sizeof(arr)/sizeof(arr[0]);
+
+heapSort(arr, size);
+
+printf("printing sorted elements\n"); // printing the sorted array 
+for (i=0; i<size; ++i) 
+printf("%d\n",arr[i]); 
+}
+15. Write a code to replace each element in an array by its rank in the array
+This problem asks to replace each element in an array by its rank in the array.
+
+The rank of an element is its position in the sorted array (with ties assigned the same rank).
+Example for array [40, 10, 20, 30]:
+After replacing each element by its rank, the array will be [4, 1, 2, 3] (after sorting, the elements are [10, 20, 30, 40], so ranks are [1, 2, 3, 4]).
+C	C++	JAVA	Python
+#include<stdio.h>
+
+int main(){
+    int arr[] = { 100, 2, 70, 12 , 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    int temp[n];
+    for(int i=0; i<n; i++)
+    temp[i] = arr[i];
+    
+    //sort the copied array
+    for(int i=0; i<n; i++){
+        for(int j=i+1; j<n; j++){
+            int x = temp[i];
+            temp[i] = temp[j];
+            temp[j] = x;
+        }
+    }
+    
+    for(int i=0; i<n; i++){
+    
+        for(int j=0; j<n; j++){
+            if(temp[j]==arr[i])
+            {
+                arr[i] = j+1;
+                break;
+            }
+        }
+    }
+    
+    for(int i=0; i<n; i++)
+    printf("%d ", arr[i]);
+}
+ 
+16. Write a code to find circular rotation of an array by K positions.
+This problem asks to find the circular rotation of an array by K positions.
+
+In a circular rotation, elements that are moved from the end of the array are appended to the beginning.
+Example for array [1, 2, 3, 4, 5] and K = 2:
+After rotating the array by 2 positions, the result will be [4, 5, 1, 2, 3].
+C	C++	JAVA	Python
+#include<stdio.h>        
+int main()    
+{             
+    int size;
+    printf("Size of array: ");
+    scanf("%d",&size);    
+    int arr[size];
+    printf("Enter the elements ");
+    for(int a=0;a<size;a++)   
+    scanf("%d",&arr[a]);    
+    int n;
+    printf("Enter the index from where you want your array to rotate ");
+    scanf("%d",&n);        
+    printf("Array: \n");    
+    for (int a = 0; a < size; a++) {     
+        printf("%d ", arr[a]);     
+    }             
+    for(int a = 0; a < n; a++) { int b, temporary; temporary = arr[size-1]; for(b = size-1; b > 0; b--)
+            {    
+                    arr[b] = arr[b-1];    
+             }    
+            arr[0] = temporary;    
+    }            
+    printf("\n");            
+    printf("New Array: \n");    
+    for(int a = 0; a< size; a++){    
+        printf("%d ", arr[a]);    
+    }    
+    return 0;    
+}
+17. Write a code to find non-repeating elements in an array.
+This problem asks to find the elements in an array that appear only once, i.e., the non-repeating elements.
+
+These elements are unique and do not appear multiple times in the array.
+Example for array [4, 5, 4, 3, 6, 3, 7]:
+Non-repeating elements are [5, 6, 7], since ‘4’ and ‘3’ repeat.
+C	C++	JAVA	Python
+#include<stdio.h> 
+
+// Main function to run the program
+int main() 
+{ 
+    int arr[] = {21, 30, 10, 2, 10, 20, 30, 11}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+
+    int visited[n];
+ 
+    for(int i=0; i<n; i++){
+
+       if(visited[i]==0){
+          int count = 1;
+          for(int j=i+1; j<n; j++){
+             if(arr[i]==arr[j]){
+                count++;
+                visited[j]=1;
+             }
+          }
+         if(count==1)
+          printf("%d "arr[i]);
+       }
+   }
+   
+   return 0; 
+}
+18. Write a code to check for the longest palindrome in an array.
+This problem asks to find the longest palindrome in an array of strings. A palindrome is a word, phrase, or sequence that reads the same backward as forward.
+
+The goal is to identify the longest string in the array that is a palindrome.
+Example for array [“racecar”, “level”, “hello”, “madam”, “world”]:
+The longest palindrome is “racecar”.
+C	C++	JAVA	Python
+#include<stdio.h>
+#include<limits.h>
+int ispalindrome(int n){
+     int rev=0, temp = n;
+
+     while(temp>0){
+          int rem = temp%10;
+          rev = rev*10 + rem;
+          temp /= 10;
+     }
+
+     if(n==rev)
+        return 1;
+
+     return 0;
+}
+
+int main(){
+    int arr[] = {1, 121, 55551, 545545, 10111, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int res = INT_MIN;
+
+    for(int i=0; i<n; i++){
+
+          if(ispalindrome(arr[i]) && res<arr[i])
+             res = arr[i];
+
+    }
+
+    if(res==INT_MIN)
+       res = -1;
+
+    printf("%d ",res);
+}
+19. Write a code to find the factorial of a number.
+This problem asks to find the factorial of a given number. The factorial of a non-negative integer n is the product of all positive integers less than or equal to n. It is denoted as n!.
+
+For example:
+5! = 5 × 4 × 3 × 2 × 1 = 120
+
+0! = 1 (by definition).
+
+C	C++	JAVA	Python
+#include<stdio.h>
+int main ()
+{
+    int num = 5, fact = 1;
+    
+    // Can't calculate factorial of a negative number
+    if(num < 0)
+        printf("Error");
+    else
+    {
+        for(int i = 1; i <= num; i++)
+            fact = fact * i;
+    }
+    
+    printf("Fact %d: %d",num, fact);
+}
+// Time complexity: O(N)
+// Space complexity: O(1)
+20. Write the code to for Armstrong number
+An Armstrong number (or Narcissistic number) is a number that is equal to the sum of its own digits each raised to the power of the number of digits.
+
+For example:
+153 is an Armstrong number because 1^3 + 5^3 + 3^3 = 153.
+370 is an Armstrong number because 3^3 + 7^3 + 0^3 = 370.
+C	C++	JAVA	Python
+#include 
+#include 
+
+// Armstrong number is any number following the given rule
+// abcd... = a^n + b^n + c^n + d^n + ...
+// Where n is the order(length/digits in number)
+
+// Example = 153 (order/length = 3)
+// 153 = 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+
+// Example = 1634 (order/length = 4)
+// 1634 = 1^4 + 6^4 + 3^4 + 4^4 = 1 + 1296 + 81 + 256 = 1634
+
+// number of digits in a number is order
+int order(int x)
+{
+    int len = 0;
+    while (x)
+    {
+        len++;
+        x = x/10;
+    }
+    return len;
+}
+
+int armstrong(int num, int len){
+
+    int sum = 0, temp, digit;
+    temp = num;
+    
+    // loop to extract digit, find power & add to sum
+    while(temp != 0)
+    {
+        // extract digit
+        digit = temp % 10;
+
+        // add power to sum
+        sum = sum + pow(digit,len);
+        temp /= 10;
+    };
+
+    return num == sum;
+}
+
+// Driver Code
+int main ()
+{
+    int num, len;
+ 
+    printf("Enter a number: ");
+    scanf("%d",&num);
+ 
+    // function to get order(length)
+    len = order(num);
+    
+    // check if Armstrong
+    if (armstrong(num, len))
+        printf("%d is Armstrong", num);
+    else
+        printf("%d is Not Armstrong", num);
+
+}
+ 
+21. Write a program to find the sum of Natural Numbers using Recursion.
+This problem asks to find the sum of the first n natural numbers using recursion. The sum of the first n natural numbers is given by the formula 1 + 2 + 3 + … + n.
+
+For example:
+Sum of first 5 natural numbers: 1 + 2 + 3 + 4 + 5 = 15.
+
+C	C++	JAVA	Python
+#include<stdio.h>
+
+int getSum(int sum,int n)
+{
+    if(n==0) 
+        return sum;
+        
+    return n+getSum(sum,n-1);
+}
+
+int main()
+{
+    int n, sum = 0; 
+    scanf("%d",&n);
+
+    printf("%d",getSum(sum, n));
+    
+    return 0;
+}
+// Time complexity : O(n)
+// Space complexity : O(1)
+// Auxilary space complexity : O(N)
+// Due to function call stack
+22. Write a program to add Two Matrices using Multi-dimensional Array.
+This problem asks to add two matrices using a multi-dimensional array. Matrix addition is done by adding corresponding elements of two matrices of the same size.
+
+The sum matrix will have the same dimensions as the input matrices.
+Example for matrices:
+Matrix A:
+[1, 2, 3]
+[4, 5, 6]
+
+Matrix B:
+[7, 8, 9]
+[10, 11, 12]
+
+The sum of Matrix A and Matrix B:
+[1+7, 2+8, 3+9]
+[4+10, 5+11, 6+12]
+
+Result:
+[8, 10, 12]
+[14, 16, 18]
+
+C
+#include 
+int main() {
+int r, c, a[100][100], b[100][100], sum[100][100], i, j;
+printf("Enter the number of rows (between 1 and 100): ");
+scanf("%d", &r);
+printf("Enter the number of columns (between 1 and 100): ");
+scanf("%d", &c);
+
+printf("\nEnter elements of 1st matrix:\n");
+for (i = 0; i < r; ++i)
+for (j = 0; j < c; ++j) {
+printf("Enter element a%d%d: ", i + 1, j + 1);
+scanf("%d", &a[i][j]);
+}
+
+printf("Enter elements of 2nd matrix:\n");
+for (i = 0; i < r; ++i)
+for (j = 0; j < c; ++j) {
+printf("Enter element a%d%d: ", i + 1, j + 1);
+scanf("%d", &b[i][j]);
+}
+
+// adding two matrices
+for (i = 0; i < r; ++i)
+for (j = 0; j < c; ++j) {
+sum[i][j] = a[i][j] + b[i][j];
+}
+
+// printing the result
+printf("\nSum of two matrices: \n");
+for (i = 0; i < r; ++i)
+for (j = 0; j < c; ++j) {
+printf("%d ", sum[i][j]);
+if (j == c - 1) {
+printf("\n\n");
+}
+}
+return 0;
+}
+23. Write a Program to Find the Sum of Natural Numbers using Recursion.
+This problem asks to find the sum of the first n natural numbers using recursion.
+
+The sum of the first n natural numbers is calculated by recursively adding the numbers from 1 to n.
+For example:
+Sum of the first 5 natural numbers: 1 + 2 + 3 + 4 + 5 = 15.
+
+C	C++	JAVA	Python
+#include
+Numbers(int n);
+
+int main() {
+
+int num;
+
+printf("Enter a positive integer: ");
+
+scanf("%d", &num);
+
+printf("Sum = %d", addNumbers(num));
+
+return 0;
+
+}
+
+int addNumbers(int n) {
+
+if (n != 0)
+
+return n + addNumbers(n - 1);
+
+else
+
+return n;
+
+}
+24. Write code to check a String is palindrome or not?
+This problem asks to check whether a given string is a palindrome or not.
+
+A string is considered a palindrome if it reads the same forward and backward, ignoring spaces, punctuation, and case.
+For example:
+“racecar” is a palindrome because it reads the same forward and backward.
+“hello” is not a palindrome because it does not read the same backward.
+C	C++	JAVA	Python
+#include 
+#include 
+
+// A function to check if a string str is palindrome
+voids isPalindrome(char str[])
+{
+// Start from leftmost and rightmost corners of str
+int l = 0;
+int h = strlen(str) - 1;
+
+// Keep comparing characters while they are same
+while (h > l)
+{
+if (str[l++] != str[h--])
+{
+printf("%s is Not Palindrome", str);
+return;
+}
+}
+printf("%s is palindrome", str);
+}
+
+// Driver program to test above function
+int main()
+{
+isPalindrome("abba");
+isPalindrome("abbccbba");
+isPalindrome("geeks");
+return 0;
+}
+25. Write a program for Binary to Decimal to conversion
+This problem asks to convert a binary number (base 2) to its decimal (base 10) equivalent.
+
+Each digit in a binary number represents a power of 2, and the decimal value is the sum of these powers.
+For example:
+Binary 101 is equal to Decimal 5 because:
+1 * 2^2 + 0 * 2^1 + 1 * 2^0 = 4 + 0 + 1 = 5.
+C	C++	JAVA	Python
+#include<stdio.h>
+
+int main()
+{
+      int  num, binary_val, decimal_val = 0, base = 1, rem;
+
+      printf("Insert a binary num (1s and 0s) \n");
+      scanf("%d", &num); /* maximum five digits */
+
+      binary_val = num;
+      while (num > 0)
+      {
+          rem = num % 10;
+          decimal_val = decimal_val + rem * base;
+         //num/=10; 
+          num = num / 10 ;
+         //base*=2;
+          base = base * 2;
+      }
+     //display binary number
+      printf("The Binary num is = %d \n", binary_val);
+    //display decimal number   
+      printf("Its decimal equivalent is = %d \n", decimal_val);
+   return 0;
+}
+
+26. Write a program to check whether a character is a vowel or consonant
+This problem asks to check whether a given character is a vowel or a consonant. Vowels are the letters a, e, i, o, u (both uppercase and lowercase). Any other alphabetic character is considered a consonant.
+
+C	C++	JAVA	Python
+#include 
+int main()
+{
+char c;
+int isLowerVowel, isUpperVowel;
+printf("Enter an alphabet: ");
+scanf("%c",&c);
+
+//To find the corrector is lowercase vowel
+isLowerVowel = (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+//To find the character is Upper case vowel
+isUpperVowel = (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+// compare to charector is Lowercase Vowel or Upper case Vowel
+
+if (isLowerVowel || isUpperVowel)
+printf("%c is a vowel", c);
+//to check character is alphabet or not
+
+elseif((c >= 'a' && c= 'A' && c <= 'Z'))
+prinf("\n not a alphabet\n");
+
+else
+printf("%c is a consonant", c);
+
+return 0;
+}
+27. Write a code to find an Automorphic number
+An Automorphic number is a number whose square ends with the same digits as the number itself.
+
+For example:
+5 is an Automorphic number because 5^2 = 25, and the last digit is 5.
+6 is an Automorphic number because 6^2 = 36, and the last digit is 6.
+25 is an Automorphic number because 25^2 = 625, and the last two digits are 25.
+C	C++	JAVA
+#include<stdio.h>
+
+int checkAutomorphic(int num)
+{
+    int square = num * num;
+    
+    while (num > 0)
+    {
+        if (num % 10 != square % 10)
+            return 0;
+        
+        // Reduce N and square
+        num = num / 10;
+        square = square / 10;
+    }
+    return 1;
+}
+
+int main()
+{
+    //enter value
+    int num;
+    scanf("%d",&num);
+    
+    //checking condition
+    if(checkAutomorphic(num))
+        printf("Automorphic"); 
+    else
+        printf("Not Automorphic");
+    return 0;
+}
+28. Write a code to find Find the ASCII value of a character
+This problem asks to find the ASCII value of a given character. The ASCII (American Standard Code for Information Interchange) value of a character is its integer representation in the ASCII table.
+
+For example:
+The ASCII value of ‘A’ is 65.
+The ASCII value of ‘a’ is 97.
+C	C++	JAVA	Python
+/* C Program to identify ASCII Value of a Character */
+#include
+#include  
+int main()
+{
+  char a;
+  
+  printf("\n Kindly insert any character \n");
+  scanf("%c",&a);
+  
+  printf("\n The ASCII value of inserted character = %d",a);
+  return 0;
+}
+29. Write a code to Remove all characters from string except alphabets
+This problem asks to remove all characters from a string except for the alphabets (both uppercase and lowercase). This can be done by filtering the string and keeping only the alphabetic characters.
+
+C	C++	JAVA	Python
+#include <stdio.h>
+int main()
+{
+    //Initializing variable.
+    char str[100];
+    int i, j;
+    
+     //Accepting input.
+    printf(" Enter a string : ");
+    gets(str);
+
+     //Iterating each character and removing non alphabetical characters.
+    for(i = 0; str[i] != '\0'; ++i)
+    {
+        while (!( (str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z') || str[i] == '\0') )
+        {
+            for(j = i; str[j] != '\0'; ++j)
+            {
+                str[j] = str[j+1];
+            }
+            str[j] = '\0'; 
+        }
+    }
+     //Printing output.
+    printf(" After removing non alphabetical characters the string is :");
+    puts(str);
+    return 0;
+}
+30. Write a code to Print the smallest element of the array
+This problem asks to find and print the smallest element in an array. You can do this by iterating through the array and comparing each element to find the smallest one.
+
+Example :
+Given an array: [5, 3, 8, 1, 9, 4]
+The smallest element in the array is 1 because it is the least value compared to the other elements.
+C	C++	JAVA	Python
+#include < stdio.h >
+
+int getSmallest(int arr[], int len)
+{
+    // assign first array element as smallest
+    int min = arr[0];
+    
+    // linearly search for the smallest element
+    for(int i=1; i < len; i++)
+    {
+        // if the current array element is smaller
+        if (arr[i] < min)
+            min = arr[i];
+    }
+    
+    return min;
+    
+}
+int main()
+{
+    int arr[] = {5, 8, 7, 2, 12, 4};
+    
+    // get the length of the array
+    int len = sizeof(arr)/sizeof(arr[0]);    
+    
+    printf("The smallest : %d", getSmallest(arr, len));
+}
+31. Write a code to Reverse the element of the array
+This problem asks to reverse the elements of an array. Reversing an array means arranging the elements in the opposite order, so the last element becomes the first and so on.
+
+Example :
+Given an array: [1, 2, 3, 4, 5]
+After reversing the array, it becomes: [5, 4, 3, 2, 1]
+The elements are arranged in the opposite order, where the last element becomes the first, and so on.
+C	C++	JAVA	Python
+#include < stdio.h>
+
+void printReverse(int arr[], int len){
+    
+    for(int i = len - 1; i >= 0; i--)
+        printf("%d ", arr[i]);
+}
+
+int main()
+{
+    int arr[] = {10, 20, 30, 40, 50, 60};
+    
+    int len = sizeof(arr)/sizeof(arr[0]);
+    
+    printf("Array in Reverse:\n");
+    printReverse(arr, len);
+
+    return 0;
+}
+32. Write a code to Sort the element of the array
+This problem asks to sort the elements of an array in ascending order. Sorting arranges the elements in order, with the smallest element first and the largest last.
+
+Example :
+Given an array of random numbers:
+[52, 3, 19, 7, 88, 12, 45, 23, 100, 6, 0, 47]
+After sorting in ascending order, the array becomes:
+[0, 3, 6, 7, 12, 19, 23, 45, 47, 52, 88, 100]
+This example contains a mix of larger and smaller numbers, and sorting arranges them from the smallest (0) to the largest (100).
+C	C++	JAVA	Python
+#include < stdio.h>
+
+void swap(int *xp, int *yp) 
+{ 
+   int temp = *xp; 
+   *xp = *yp; 
+   *yp = temp; 
+}
+
+void selectionSort(int array[], int size) 
+{ 
+    int i, j, min_idx;
+
+    // Loop to iterate on array 
+    for (i = 0; i < size-1; i++) 
+    { 
+        // Here we try to find the min element in array 
+        min_idx = i; 
+        for (j = i+1; j < size; j++)
+        {
+            if (array[j] < array[min_idx]) 
+              min_idx = j; 
+        }
+        // Here we interchange the min element with first one 
+        swap(&array[min_idx], &array[i]); 
+     } 
+}
+
+/* Display function to print values */
+void display(int array[], int size) 
+{ 
+    int i; 
+    for (i=0; i < size; i++)
+    { 
+       printf("%d ",array[i]);
+    }
+     printf("\n"); 
+}
+
+// The main function to drive other functions 
+int main() 
+{ 
+   int array[] = {50, 30, 10, 90, 80, 20, 40, 70}; 
+   int size = sizeof(array)/sizeof(array[0]);
+
+   selectionSort(array, size);
+  
+   display(array, size);
+
+   return 0; 
+}
+33. Write a code to Sort the element of the array without sort method
+This problem asks to sort the elements of an array without using the built-in sort() method. The solution requires using the swap method to manually arrange the array in ascending order.
+
+One common way to do this is by using a sorting algorithm like Bubble Sort, where adjacent elements are compared and swapped if they are in the wrong order.
+Example:
+Given an array:
+[4, 2, 9, 1]
+
+Steps (Bubble Sort with Swap Method):
+First Pass:
+Compare 4 and 2. Since 4 > 2, swap them: [2, 4, 9, 1]
+Compare 4 and 9. No swap needed: [2, 4, 9, 1]
+Compare 9 and 1. Since 9 > 1, swap them: [2, 4, 1, 9]
+After the first pass, the largest element 9 is in its correct position.
+
+Second Pass:
+Compare 2 and 4. No swap needed: [2, 4, 1, 9]
+Compare 4 and 1. Since 4 > 1, swap them: [2, 1, 4, 9]
+After the second pass, 4 is now in its correct position.
+Third Pass:
+Compare 2 and 1. Since 2 > 1, swap them: [1, 2, 4, 9]
+Now the array is fully sorted.
+Final Sorted Array:
+[1, 2, 4, 9]
+C	C++	JAVA	Python
+#include < stdio.h>
+
+void swap(int *xp, int *yp) 
+{ 
+   int temp = *xp; 
+   *xp = *yp; 
+   *yp = temp; 
+}
+
+void selectionSort(int array[], int size) 
+{ 
+    int i, j, min_idx;
+
+    // Loop to iterate on array 
+    for (i = 0; i < size-1; i++) 
+    { 
+        // Here we try to find the min element in array 
+        min_idx = i; 
+        for (j = i+1; j < size; j++)
+        {
+            if (array[j] < array[min_idx]) 
+              min_idx = j; 
+        }
+        // Here we interchange the min element with first one 
+        swap(&array[min_idx], &array[i]); 
+     } 
+}
+
+/* Display function to print values */
+void display(int array[], int size) 
+{ 
+    int i; 
+    for (i=0; i < size; i++)
+    { 
+       printf("%d ",array[i]);
+    }
+     printf("\n"); 
+}
+
+// The main function to drive other functions 
+int main() 
+{ 
+   int array[] = {50, 30, 10, 90, 80, 20, 40, 70}; 
+   int size = sizeof(array)/sizeof(array[0]);
+
+   selectionSort(array, size);
+  
+   display(array, size);
+
+   return 0; 
+}
+34. Write a code to Replace a Substring in a string
+This problem asks to replace a specific substring within a string with another substring. The task is to identify all occurrences of the substring and replace them with the new one.
+
+Example :
+Input String:
+“I love programming in Python!”
+Substitute:
+Replace “Python” with “Java”.
+Output:
+“I love programming in Java!”
+C	C++	JAVA	Python
+
+#include< stdio.h>  
+#include< string.h>  
+  int main() {
+        char str[256] = "prepinsta", substr[128] = "insta", replace[128] = "ster ", output[256];
+        int i = 0, j = 0, flag = 0, start = 0;
+        
+        str[strlen(str) - 1] = '\0';
+        substr[strlen(substr) - 1] = '\0';
+        replace[strlen(replace) - 1] =  '\0';
+
+        // check whether the substring to be replaced is present 
+        while (str[i] != '\0')
+        {
+                if (str[i] == substr[j]) 
+                {
+                        if (!flag)
+                                start = i;
+                        j++;
+                        if (substr[j] == '\0')
+                                break;
+                        flag = 1;
+                } 
+                else 
+                {
+                        flag = start = j = 0;
+                }
+                i++;
+        }
+        if (substr[j] == '\0' && flag)
+        {
+                for (i = 0; i < start; i++)
+                        output[i] = str[i];
+
+                // replace substring with another string 
+                for (j = 0; j < strlen(replace); j++) 
+                {
+                        output[i] = replace[j];
+                        i++;
+                }
+                // copy remaining portion of the input string "str" 
+                for (j = start + strlen(substr); j < strlen(str); j++)
+                {
+                        output[i] = str[j];
+                        i++;
+                }
+                // print the final string 
+                output[i] = '\0';
+                printf("Output: %s\n", output);
+        } else {
+                printf("%s is not a substring of %s\n", substr, str);
+        }
+        return 0;
+  }
+
+35. Write a code to Remove space from a string
+This problem asks to remove all spaces from a given string. The task is to remove every occurrence of spaces, including leading, trailing, and any spaces in between the words.
+
+Example :
+Input String:
+“This is a test string”
+Output:
+“Thisisateststring”
+C	C++	JAVA	Python
+#include< stdio.h> 
+using namespace std;
+// Function to remove all spaces from a given string
+void removeSpaces(char *str)
+{
+    // To keep track of non-space character count
+    int count = 0;
+    // Traverse the provided string. If the current character is not a space,
+    //move it to index 'count++'.
+    for (int i = 0; str[i]; i++)
+        if (str[i] != ' ')
+            str[count++] = str[i]; // here count is incremented
+    str[count] = '\0';
+}
+// Driver program to test above function
+int main()
+{
+    char str[] = "P re p i  n  sta ";
+    removeSpaces(str);
+    printf("%s", str);
+    return 0;
+}
+
+36. Write a code to Count Inversion
+This problem asks to count the number of inversions in an array. An inversion in an array is a pair of indices (i, j) such that i < j and arr[i] > arr[j]. The goal is to count how many such pairs exist in the given array.
+
+Example :
+
+Given the array [1, 20, 6, 4, 5], we count the number of inversions where a larger number appears before a smaller one.
+The inversions are: (20, 6), (20, 4), (20, 5), (6, 4), and (6, 5), totaling 5 inversions.
+Each inversion is counted whenever a pair (i, j) with i < j and arr[i] > arr[j] is found. Thus, the result is 5.
+C	C++	JAVA	Python
+#include < stdio.h >
+
+int _mergeSort(int arr[], int temp[], int left, int right);
+int merge(int arr[], int temp[], int left, int mid,int right);
+
+/* This function sorts the
+input array and returns the
+number of inversions in the array */
+int mergeSort(int arr[], int array_size)
+{
+   int temp[array_size];
+   return _mergeSort(arr, temp, 0, array_size - 1);
+}
+
+/* An auxiliary recursive function
+that sorts the input array and
+returns the number of inversions in the array. */
+int _mergeSort(int arr[], int temp[], int left, int right)
+{
+   int mid, inv_count = 0;
+   if (right > left) {
+   /* Divide the array into two parts and
+   call _mergeSortAndCountInv()
+   for each of the parts */
+   mid = (right + left) / 2;
+
+   /* Inversion count will be sum of
+   inversions in left-part, right-part
+   and number of inversions in merging */
+   inv_count += _mergeSort(arr, temp, left, mid);
+   inv_count += _mergeSort(arr, temp, mid + 1, right);
+
+   /*Merge the two parts*/
+   inv_count += merge(arr, temp, left, mid + 1, right);
+   }
+   return inv_count;
+}
+
+/* This funt merges two sorted arrays
+and returns inversion count in the arrays.*/
+int merge(int arr[], int temp[], int left, int mid,int right)
+{
+   int i, j, k;
+   int inv_count = 0;
+
+   i = left; /* i is index for left subarray*/
+   j = mid; /* j is index for right subarray*/
+   k = left; /* k is index for resultant merged subarray*/
+   while ((i <= mid - 1) && (j <= right)) {
+     if (arr[i] <= arr[j]) {
+       temp[k++] = arr[i++];
+     }
+     else {
+        temp[k++] = arr[j++];
+
+        /* this is tricky -- see above
+        explanation/diagram for merge()*/
+        inv_count = inv_count + (mid - i);
+      }
+   }
+
+   /* Copy the remaining elements of left subarray
+   (if there are any) to temp*/
+   while (i <= mid - 1)
+    temp[k++] = arr[i++];
+
+    /* Copy the remaining elements of right subarray
+    (if there are any) to temp*/
+    while (j <= right)
+      temp[k++] = arr[j++];
+
+      /*Copy back the merged elements to original array*/
+      for (i = left; i <= right; i++)
+         arr[i] = temp[i];
+
+      return inv_count;
+}
+
+// Driver code
+int main()
+{
+  int n ;
+
+  scanf("%d", &n);
+
+  int arr[n];
+  for(int i=0; i
+37. Write a code to find consecutive largest subsequence
+This problem asks to find the longest consecutive subsequence in an unsorted array. A consecutive subsequence is a sequence of numbers that appear in consecutive order but not necessarily contiguous in the original array.
+
+Example :
+
+Input Array:
+[100, 4, 200, 1, 3, 2]
+Step 1:
+Convert the array to a set for fast lookups:
+{100, 4, 200, 1, 3, 2}
+Step 2:
+Start checking from each element:
+For 100: Not part of a sequence, so skip.
+For 4: Start a sequence. Find 3, 2, and 1 in the set.
+Sequence found: [1, 2, 3, 4].
+Step 3:
+The longest consecutive subsequence is [1, 2, 3, 4].
+C	C++	JAVA	Python
+#include < stdio.h>
+#include < stdlib.h>
+
+//call back function
+int compare(const void * a, const void * b)
+{
+    return ( *(int*)a - *(int*)b );
+}
+
+int findLongestConseqSeq(int arr[], const int n)
+{
+    int length = 1;
+    int longestConsecutiveSeq = 1;
+    int i =0;
+    
+    //sort arr elements using qsort inbuilt function
+    qsort( arr,n, sizeof(int), compare);
+    for ( i = 0; i < n - 1; i++) {
+        if(arr[i] == arr[i+1]) { 
+           continue; 
+        }
+        else if (arr[i] + 1 == arr[i + 1]) { 
+           length++; 
+        } 
+        else {
+           length = 1; 
+        } 
+       longestConsecutiveSeq = (longestConsecutiveSeq > length)? longestConsecutiveSeq: length;
+    }
+    return longestConsecutiveSeq;
+}
+int main()
+{
+    int arr[] = {2,5,7,7,8,8,9,4,10,12,3,6};
+    
+    const int N = sizeof(arr)/sizeof(arr[0]);
+    const int longestConsecutiveSeq = findLongestConseqSeq(arr, N);
+    
+    printf("Longest Consecutive Sequence is %d",longestConsecutiveSeq);
+    return 0;
+}
+
+
+
+38: Write a Program to Find out the Sum of Digits of a Number.
+This problem asks to find the sum of the digits of a given number. The goal is to extract each digit of the number and compute their sum.
+
+Example :
+
+Input: 12345
+Extract and Add:
+5 + 4 + 3 + 2 + 1
+Sum: 15
+Output: The sum of digits is 15.
+C	C++	JAVA	Python
+#include
+
+int main ()
+{
+int num, sum = 0;
+
+printf("Enter any num: ");
+scanf("%d",&num);
+
+//loop to find sum of digits
+while(num!=0){
+sum += num % 10;
+num = num / 10;
+}
+
+//output
+printf("Sum: %d",sum);
+
+return 0;
+
+}
+// Time complexity : O(N)
+// Space complexity : O(1)
+Find More Solutions at C Program to Find the Sum of Digits of a Number
+
+39: Write a Program to Find out the Power of a Number
+This program calculates the power of a number. Given a base a and exponent b, compute𝑎𝑏
+(a raised to the power b).
+
+Example :
+
+Input: Base = 2, Exponent = 5
+Calculation: 2^5 = 2×2×2×2×2
+Result: 32
+Output: 2 raised to the power 5 is: 32
+C	C++	JAVA	Python
+// pow function is contained in math.h library
+#include<stdio.h>
+#include <math.h>
+
+int main() 
+{
+double base = 2.3;
+double exp = 2.1;
+double result;
+
+// calculates the power
+result = pow(base, exp);
+
+// %lf used for double
+printf("%lf ^ %lf = %lf\n", base, exp, result);
+
+// following can be used for precision setting
+printf("%.1lf ^ %.1lf = %.2lf", base, exp, result);
+
+return 0;
+}
+Find More Solutions at C Program to find out the Power of a Number
+
+40: Write a Program to Find out the Sum of Digits of a Number.
+This program calculates the sum of digits of a given number. It repeatedly extracts each digit and adds them together.
+
+Example:
+
+Input: 789
+Digits: 7, 8, 9
+Sum: 7 + 8 + 9 = 24
+Output: Sum of digits of 789 is: 24
+C	C++	JAVA	Python
+#include
+
+int main ()
+{
+int num, sum = 0;
+
+printf("Enter any num: ");
+scanf("%d",&num);
+
+//loop to find sum of digits
+while(num!=0){
+sum += num % 10;
+num = num / 10;
+}
+
+//output
+printf("Sum: %d",sum);
+
+return 0;
+
+}
+// Time complexity : O(N)
+// Space complexity : O(1)
+Find More Solutions at C Program to Find the Sum of Digits of a Number
+41: Write a Program to Add two Fractions
+This program adds two fractions and gives the simplified result.
+
+Example:
+
+Input Fractions: 1/2 and 1/3
+Steps: Cross multiply and add → result is 5/6
+Simplified Result: 5/6
+C	C++	JAVA	Python
+#include<stdio.h>
+int main()
+{
+//for initialize variables
+int numerator1, denominator1, numerator2, denominator2, x, y, c, gcd_no;
+
+//To take user input of numerators and denominators
+printf("Enter the numerator for 1st number : ");
+scanf("%d",&numerator1);
+printf("Enter the denominator for 1st number : ");
+scanf("%d",&denominator1);
+printf("Enter the numerator for 2nd number : ");
+scanf("%d",&numerator2);
+printf("Enter the denominator for 2nd number : ");
+scanf("%d",&denominator2);
+
+//numerator
+x=(numerator1*denominator2)+(denominator1*numerator2); 
+
+//denominator
+y=denominator1*denominator2; 
+
+// Trick part. Reduce it to the simplest form by using gcd.
+for(c=1; c <= x && c <= y; ++c)
+{
+if(x%c==0 && y%c==0)
+gcd_no = c;
+}
+
+//To display fraction of givien numerators and denominators
+printf("(%d / %d) + (%d / %d) = (%d / %d)", numerator1, denominator1, numerator2, denominator2, x/gcd_no, y/gcd_no);
+
+return 0;
+}
+Find More Solutions at C Program to add two fractions
+
+42: Write a Program to Find the Largest Element in an Array.
+This program finds the largest element present in a given array by comparing each element.
+
+It checks all elements one by one and keeps track of the maximum value found so far.
+Example:
+
+Input Array: [10, 45, 2, 67, 23]
+Compare elements: Find the biggest number.
+Largest Element: 67
+Output: Largest element is: 67
+C	C++	JAVA	Python
+// C Program to find largest element in an array
+#include<stdio.h>
+
+int getLargest(int arr[], int len)
+{
+// assign first array element as largest
+int max = arr[0];
+
+// linearly search for the largest element
+for(int i=1; i max)
+max = arr[i];
+}
+
+return max;
+
+}
+int main()
+{
+int arr[] = {20, 5, 35, 40, 10, 50, 15};
+
+// get the length of the array
+int len = sizeof(arr)/sizeof(arr[0]); 
+
+printf("The Largest element is: %d", getLargest(arr, len));
+}
+// Time complexity: O(N)
+// Space complexity: O(N)
+Find More Solutions at C Program to Find the Largest Element in an Array
+
+43: Write a Program to Find the Roots of a Quadratic Equation
+This program finds the roots of a quadratic equation.
+
+It checks if the roots are real, equal, or complex based on calculation results.
+Example:
+
+Input: a = 1, b = -3, c = 2
+Process: Find roots. Roots are real and different.
+Roots:2.0 and 1.0
+Output: Roots are real and different: 2.0, 1.0
+C	C++	JAVA	Python
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdio.h>
+
+void findRoots(int a, int b, int c)
+{
+if (a == 0) {
+printf("Invalid");
+return;
+}
+
+int d = b * b - 4 * a * c;
+double sqrt_val = sqrt(abs(d));
+
+if (d > 0) {
+printf("Roots are real and different \n");
+printf("%f\n%f", (double)(-b + sqrt_val) / (2 * a),(double)(-b - sqrt_val) / (2 * a));
+}
+else if (d == 0) {
+printf("Roots are real and same \n");
+printf("%f", -(double)b / (2 * a));
+}
+else // d < 0
+{
+printf("Roots are complex \n");
+printf("%f + i%f\n%f - i%f", -(double)b / (2 * a), sqrt_val/(2 * a), -(double)b / (2 * a), sqrt_val/(2 * a));
+}
+}
+
+int main()
+
+
+{
+int a = 1, b = 4, c = 4;
+
+findRoots(a, b, c);
+return 0;
+}
+Find More Solutions at C Program to Find the Roots of a Quadratic Equation
+
+44: Write a Program to Find the Prime Factors of a Number.
+This program finds all the prime factors of a given number. A prime factor is a factor that is a prime number.
+
+The program checks each number and divides the given number by all possible prime factors until it’s reduced to 1.
+Example:
+
+Input: 56
+Process:
+Divide 56 by 2 → 56 / 2 = 28
+Divide 28 by 2 → 28 / 2 = 14
+Divide 14 by 2 → 14 / 2 = 7
+7 is prime, so stop here.
+Prime Factors: 2, 2, 2, 7
+Output: Prime factors of 56 are: [2, 2, 2, 7]
+C	C++	JAVA	Python
+#include<stdio.h>
+
+void primefactor(int num) {
+
+printf("Prime factors of the number : ");
+for (int i = 2; num > 1; i++) {
+
+while (num % i == 0) {
+printf("%d ", i);
+num = num / i;
+}
+}
+}
+int main() {
+
+int num;
+printf("Enter the positive integer: ");
+scanf("%d", &num);
+
+primefactor(num);
+return 0;
+}
+Find More Solutions at C Program to Find the Prime Factors of a Number
+
+45: Write a Program to Convert Digits to Words.
+This program converts a number (digits) into words. For example, the number 123 should be converted into “One Two Three”.
+
+Example:
+
+Input: 123
+Process:
+1 → “One”
+2 → “Two”
+3 → “Three”
+Output: Digits 123 in words are: One Two Three
+C	C++	JAVA	Python
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void convert_to_words(char* num)
+{
+int len = strlen(num);
+
+/* Base cases */
+if (len == 0) {
+fprintf(stderr, "empty string\n");
+return;
+}
+if (len > 4) {
+fprintf(stderr,
+"Length more than 4 is not supported\n");
+return;
+}
+
+char* single_digits[] = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+char* two_digits[]= { "", "ten", "eleven","twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+
+char* tens_multiple[] = { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+char* tens_power[] = { "hundred", "thousand" };
+
+printf("\n%s: ", num);
+
+if (len == 1) {
+printf("%s\n", single_digits[*num - '0']);
+return;
+}
+
+while (*num != '\0') {
+
+if (len >= 3) {
+if (*num - '0' != 0) {
+printf("%s ", single_digits[*num - '0']);
+printf("%s ", tens_power[len - 3]); 
+}
+--len;
+}
+
+else {
+if (*num == '1') {
+int sum = *num - '0' + *(num + 1) - '0';
+printf("%s\n", two_digits[sum]);
+return;
+}
+
+else if (*num == '2' && *(num + 1) == '0') {
+printf("twenty\n");
+return;
+}
+
+else {
+int i = *num - '0';
+printf("%s ", i ? tens_multiple[i] : "");
+++num;
+if (*num != '0')
+printf("%s ",
+single_digits[*num - '0']);
+}
+}
+++num;
+}
+}
+
+int main(void)
+{
+convert_to_words("9459");
+return 0;
+}
+Find More Solutions at C Program to Convert Digits to Words
+
+46: Write a Program to Find the Factorial of a Number using Recursion.
+This program calculates the factorial of a number using recursion. The factorial of a number n is the product of all positive integers less than or equal to n.
+
+Example:
+
+Input: 5
+Process:
+5 * factorial(4)
+4 * factorial(3)
+3 * factorial(2)
+2 * factorial(1) (Base case: factorial of 1 is 1)
+Output: Factorial of 5 is: 120
+C	C++	JAVA	Python
+#include<stdio.h>
+int getFactorial(int num)
+{
+if(num == 0)
+return 1;
+
+return num * getFactorial(num-1);
+}
+int main ()
+{
+int num = 7;
+
+int fact = getFactorial(num);
+
+printf("Fact %d: %d",num, fact);
+}
+Find More Solutions at C Program to Find the Factorial of a Number using Recursion
+
+47: Write a Program to Reverse an Array
+This program reverses the elements of an array. It swaps elements from the beginning and end until the entire array is reversed.
+
+Example:
+
+Input: [1, 2, 3, 4, 5]
+Process:
+Swap 1 and 5 → [5, 2, 3, 4, 1]
+Swap 2 and 4 → [5, 4, 3, 2, 1]
+Array is reversed.
+Output: Reversed array: [5, 4, 3, 2, 1]
+C	C++	JAVA	Python
+#include <stdio.h>
+
+void printReverse(int arr[], int len){
+
+for(int i = len - 1; i >= 0; i--)
+printf("%d ", arr[i]);
+}
+
+int main()
+{
+int arr[] = {10, 20, 30, 40, 50, 60};
+
+int len = sizeof(arr)/sizeof(arr[0]);
+
+printf("Array in Reverse:\n");
+printReverse(arr, len);
+
+return 0;
+}
+Find More Solutions at C Program to Reverse an Array
+48. Write code to check if two strings match where one string contains wildcard characters
+This program checks if two strings match, where one of the strings may contain wildcard characters.
+
+The wildcard character * represents any sequence of characters (including an empty sequence), and ? represents any single character.
+Example:
+
+Input:
+Pattern: “a*b?e”
+String: “ababe”
+Process:
+* matches “ab”
+? matches “b”
+Output: Do the strings match? True
+C	C++	Python
+#include   
+#include  
+bool check(char *str1, char * str2) ;// declaration of the check() function
+int main() 
+{ 
+    char str1[100],str2[100];
+    printf("Enter first string with wild characters : ");
+    gets(str1);
+    printf("Enter second string without wild characters : ");
+    gets(str2);
+    test(str1,str2);
+    return 0; 
+} 
+
+bool check(char *str1, char * str2) 
+{ 
+    // checking end of both the strings 
+    if (*str1 == '\0' && *str2 == '\0') 
+         return true; 
+  
+    // comparing the characters of both the strings and wild characters(*)
+    if (*str1 == '*' && *(str1+1) != '\0' && *str2 == '\0') 
+         return false; 
+  
+    // checking wild characters(?) 
+    if (*str1 == '?' || *str1 == *str2) 
+         return check(str1+1, str2+1); 
+  
+    
+    if (*str1 == '*') 
+         return check(str1+1, str2) || check(str1, str2+1); 
+     return false; 
+} 
+  
+// test() function for running test cases
+void test(char *str1, char *str2) 
+{ 
+    check(str1, str2)? puts(" Yes "): puts(" No "); 
+    
+}
+
+49: Write a Program to find out the Spiral Traversal of a Matrix.
+This program finds the spiral traversal of a matrix, where the elements are visited in a spiral order starting from the top left corner.
+
+The traversal follows the pattern: left to right, top to bottom, right to left, and bottom to top, continuously spiraling inward.
+Example:
+
+Input:
+Matrix:
+[
+[1, 2, 3],
+[4, 5, 6],
+[7, 8, 9]
+]
+
+Process:
+First row: 1, 2, 3
+Last column: 6, 9
+Last row (reverse): 8, 7
+First column (reverse): 4
+Middle element: 5
+Spiral Traversal: [1, 2, 3, 6, 9, 8, 7, 4, 5]
+Output:
+Spiral traversal: [1, 2, 3, 6, 9, 8, 7, 4, 5]
+C	C++	JAVA
+#include <stdio.h>
+#define r 4
+#define c 4
+
+int main()
+{ 
+int a[4][4] = { { 1, 2, 3, 4 },
+
+{ 5, 6, 7, 8 },
+
+{ 9, 10, 11, 12 },
+
+{ 13, 14, 15, 16 } };
+
+int i, left = 0, right = c-1, top = 0, bottom = r-1;
+
+while (left <= right && top <= bottom) {
+
+/* Print the first row
+from the remaining rows */
+for (i = left; i <= right; ++i) {
+printf("%d ", a[top][i]);
+}
+top++;
+
+/* Print the last column
+from the remaining columns */
+for (i = top; i <= bottom; ++i) {
+printf("%d ", a[i][right]);
+}
+right--;
+
+/* Print the last row from
+the remaining rows */
+if (top <= bottom) { for (i = right; i >= left; --i) {
+printf("%d ", a[bottom][i]);
+}
+bottom--;
+}
+
+/* Print the first column from
+the remaining columns */
+if (left <= right) { for (i = bottom; i >= top; --i) {
+printf("%d ", a[i][left]);
+}
+left++;
+}
+}
+
+return 0;
+}
+Find More Solutions at C Program to Find the Spiral Traversal of a Matrix
+
+50. Write a code to find Fibonacci Series using Recursion
+This program calculates the Fibonacci series using recursion. In the Fibonacci series, each number is the sum of the two preceding ones, starting from 0 and 1.
+
+Example:
+
+Input: 10
+Process:
+The Fibonacci sequence starts from 0 and 1.
+For n=10, the series is generated as follows:
+fibonacci(0) = 0
+fibonacci(1) = 1
+fibonacci(2) = 1 (0 + 1)
+fibonacci(3) = 2 (1 + 1)
+Continue this until n=10.
+Fibonacci Series: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+Output: Fibonacci series up to 10 terms: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+C	C++	JAVA	Python
+//Fibonacci Series using Recursion
+#include
+int fibo(int n)
+{
+    if (n <= 1)
+        return n;
+    return fibo(n-1) + fibo(n-2);
+}
+
+int main ()
+{
+int n = 9;
+printf("%d", fib(n));
+getchar();
+return 0;
+}
+Introduction to Programming
+There are primarily four programming languages on which interviewers can ask questions. You can prepare for coding languages here:-
+
+Learn C
+Learn C++
+Learn Java
+Learn Python
+Other than coding languages, the placement process also requires one to learn about DSA.
+
+Most Asked Coding Questions
+Below we have given the most commonly asked coding questions in placement and interviews.
+
+Most asked Coding Questions (PrepInsta Top 100 Codes)
+Most asked Coding Questions DSA (PrepInsta Top 100 DSA)
+how to prepare for a coding test
+Also Check
+Skill Specific Pages 
+MERN Interview Questions
+
+HTML Interview Questions
+
+CSS Interview Questions
+
+JavaScript Interview Questions
+
+Node.js Technical Interview Questions
+
+Data Analytics Technical Interview Questions
+
+Power BI Technical Interview Questions
+
+Cloud Computing Technical Interview Questions
+
+Data Analytics Technical Interview Questions
+
+Technical Skills for Interview Preparation
+
+Language Specific and Coding
+C Technical Interview Questions
+
+C++  Technical Interview Questions
+
+JAVA Technical Interview Questions
+
+Python Technical Interview Questions
+
+DSA Technical Interview Questions
+
+Most Asked Coding Question
+
+Top 100 Codes
+
+OOPS Technical Interview Questions
+
+Core Subjects
+DBMS Technical Interview Questions
+
+Software Engineering Question
+
+Github Technical Interview Questions
+
+SQL Technical Interview Questions
+
+OS Technical Interview Questions
+
+Computer Network Technical Interview Questions
+
+
+FAQs on Most Asked Coding Questions in Placement
+Question 1: What are the basics of coding?
+The basics of coding are Data Types, Flow controls (loops) and functional programming.
+
+Question 2: Which company has the hardest coding interview questions?
+Product Based Companies like Google, Microsoft, Amazon ask the hardest coding interview questions. 
+
+Question 3: What language is used in coding?
+Coding languages mostly used in placement exams are Java, C, C++ and Python.
+
+Logged in as rutujaupase13. Edit your profile. Log out? Required fields are marked *
+
+Enter comment here...
+
+PrepInsta.com
+No.1 and most visited website for Placements in India.
+
+We help students to prepare for placements with the best study material, online classes, Sectional Statistics for better focus and Success stories & tips by Toppers on PrepInsta.
+
+Prepinsta Powered by Metis Eduventures Private Limited
+
+© 2025 Prep Insta
+Support
+Prepinsta Prime
+Prepinsta Prime Max
+Contact Us
+About Us
+Refund Policy
+Privacy Policy
+Services 
+Disclaimer
+Terms and Conditions
+
+Companies
+Accenture
+Cognizant
+MindTree
+VMware
+CapGemini
+Deloitte
+WiproMicrosoft
+TCS
+Infosys
+Oracle
+HCL
+TCS Ninja
+IBM
+All Exams Dashboards
+CoCubes Dashboard
+eLitmus Dashboard
+HirePro Dashboard
+MeritTrac Dashboard
+Mettl Dashboard
+DevSquare Dashboard
+
+Get In Touch
+Instagram
+Linkedin
+Youtube
+Telegram
+Facebook
+Twitter
+
+Get In Touch
+ support@prepinsta.com
++91-8448440710
+Text us on Whatsapp/Instagram
+
+Privacy Policy | Copyright © 2025 Prep Insta
+ ×
+
+30+ Companies are Hiring
+Get Hiring Updates right in your inbox from PrepInsta
+
+Enter your Mobile Number
+ 
+Select your Passing out Year
+Get Hiring Updates
+
